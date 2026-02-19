@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FFF5E1;
+  --color-cream-light: #FFFBF5;
+  --color-cream-dark: #F5E6C8;
+  --color-maroon: #7A1E1E;
+  --color-maroon-light: #9A2E2E;
+  --color-maroon-dark: #5A1515;
+  --color-gold: #D4AF37;
+  --color-gold-light: #E5C65A;
+  --color-gold-dark: #B8962E;
+  --color-orange: #E07B39;
+  --color-orange-light: #F09050;
+  --color-orange-dark: #C06528;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FFF5E1;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Indian sweet box pattern background */
+.pattern-bg {
+  background-color: #FFF5E1;
+  background-image: 
+    radial-gradient(circle at 0% 0%, transparent 70%, rgba(212, 175, 55, 0.1) 70%),
+    radial-gradient(circle at 100% 0%, transparent 70%, rgba(212, 175, 55, 0.1) 70%),
+    radial-gradient(circle at 100% 100%, transparent 70%, rgba(212, 175, 55, 0.1) 70%),
+    radial-gradient(circle at 0% 100%, transparent 70%, rgba(212, 175, 55, 0.1) 70%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 0, 30px -30px, 0px 30px;
+}
+
+.pattern-bg-maroon {
+  background-color: #7A1E1E;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      rgba(212, 175, 55, 0.1) 20px,
+      rgba(212, 175, 55, 0.1) 21px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      rgba(212, 175, 55, 0.1) 20px,
+      rgba(212, 175, 55, 0.1) 21px
+    );
+}
+
+/* Fan/shell pattern inspired by Indian mithai boxes */
+.shell-pattern {
+  background: 
+    radial-gradient(circle at 50% 100%, transparent 50%, rgba(212, 175, 55, 0.08) 50%, rgba(212, 175, 55, 0.08) 55%, transparent 55%),
+    radial-gradient(circle at 0% 100%, transparent 50%, rgba(212, 175, 55, 0.08) 50%, rgba(212, 175, 55, 0.08) 55%, transparent 55%),
+    radial-gradient(circle at 100% 100%, transparent 50%, rgba(212, 175, 55, 0.08) 50%, rgba(212, 175, 55, 0.08) 55%, transparent 55%);
+  background-size: 40px 20px;
+  background-color: #FFF5E1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF5E1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8962E;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(122, 30, 30, 0.15);
+}
+
+/* Gold border animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #D4AF37 0%, #E5C65A 50%, #D4AF37 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Toast animations */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+.toast-enter {
+  animation: slideIn 0.3s ease-out;
+}
+
+.toast-exit {
+  animation: slideOut 0.3s ease-in;
+}

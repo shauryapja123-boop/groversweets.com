@@ -1,0 +1,44 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+mongoose.connect("mongodb://localhost:27017/grover-sweets", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const signupSchema = new mongoose.Schema({
+  fullName: String,
+  email: String,
+  mobile: String,
+  password: String,
+  outletId: String,
+  department: String,
+  designation: String,
+  status: { type: String, default: "pending" },
+});
+
+const SignupRequest = mongoose.model("SignupRequest", signupSchema);
+
+app.post("/api/signup", async (req, res) => {
+  const request = new SignupRequest(req.body);
+  await request.save();
+  res.json({ message: "Signup request submitted" });
+});
+
+app.get("/api/signup-requests", async (req, res) => {
+  const requests = await SignupRequest.find();
+  res.json(requests);
+});
+
+app.put("/api/signup-requests/:id", async (req, res) => {
+  const { status } = req.body;
+  await SignupRequest.findByIdAndUpdate(req.params.id, { status });
+  res.json({ message: "Request updated" });
+});
+
+app.listen(5000, () => console.log("Backend running on http://localhosth:5000"));
