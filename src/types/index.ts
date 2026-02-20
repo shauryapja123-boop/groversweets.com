@@ -14,6 +14,7 @@ export interface User {
   mobile: string;
   outletId: string;
   avatar?: string;
+  active?: boolean;
 }
 
 export interface Outlet {

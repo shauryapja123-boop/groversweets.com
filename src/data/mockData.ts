@@ -20,14 +20,14 @@ export const users: User[] = [
   { id: 'm5', email: 'manager5@groversweets.com', password: 'manager123', name: 'Ravi Verma', role: 'manager', employeeId: 'GS-MGR-005', mobile: '9876543215', outletId: 'o5' },
   
   // Employees
-  { id: 'e1', email: 'emp1@groversweets.com', password: 'emp123', name: 'Rahul Gupta', role: 'employee', employeeId: 'GS-EMP-001', mobile: '9876543220', outletId: 'o1' },
-  { id: 'e2', email: 'emp2@groversweets.com', password: 'emp123', name: 'Neha Agarwal', role: 'employee', employeeId: 'GS-EMP-002', mobile: '9876543221', outletId: 'o1' },
-  { id: 'e3', email: 'emp3@groversweets.com', password: 'emp123', name: 'Suresh Yadav', role: 'employee', employeeId: 'GS-EMP-003', mobile: '9876543222', outletId: 'o2' },
-  { id: 'e4', email: 'emp4@groversweets.com', password: 'emp123', name: 'Meera Joshi', role: 'employee', employeeId: 'GS-EMP-004', mobile: '9876543223', outletId: 'o2' },
-  { id: 'e5', email: 'emp5@groversweets.com', password: 'emp123', name: 'Deepak Chauhan', role: 'employee', employeeId: 'GS-EMP-005', mobile: '9876543224', outletId: 'o3' },
-  { id: 'e6', email: 'emp6@groversweets.com', password: 'emp123', name: 'Anjali Mishra', role: 'employee', employeeId: 'GS-EMP-006', mobile: '9876543225', outletId: 'o3' },
-  { id: 'e7', email: 'emp7@groversweets.com', password: 'emp123', name: 'Karan Malhotra', role: 'employee', employeeId: 'GS-EMP-007', mobile: '9876543226', outletId: 'o4' },
-  { id: 'e8', email: 'emp8@groversweets.com', password: 'emp123', name: 'Pooja Saxena', role: 'employee', employeeId: 'GS-EMP-008', mobile: '9876543227', outletId: 'o5' },
+  { id: 'e1', email: 'emp1@groversweets.com', password: 'emp123', name: 'Rahul Gupta', role: 'employee', employeeId: 'GS-EMP-001', mobile: '9876543220', outletId: 'o1', active: true },
+  { id: 'e2', email: 'emp2@groversweets.com', password: 'emp123', name: 'Neha Agarwal', role: 'employee', employeeId: 'GS-EMP-002', mobile: '9876543221', outletId: 'o1', active: true },
+  { id: 'e3', email: 'emp3@groversweets.com', password: 'emp123', name: 'Suresh Yadav', role: 'employee', employeeId: 'GS-EMP-003', mobile: '9876543222', outletId: 'o2', active: false },
+  { id: 'e4', email: 'emp4@groversweets.com', password: 'emp123', name: 'Meera Joshi', role: 'employee', employeeId: 'GS-EMP-004', mobile: '9876543223', outletId: 'o2', active: true },
+  { id: 'e5', email: 'emp5@groversweets.com', password: 'emp123', name: 'Deepak Chauhan', role: 'employee', employeeId: 'GS-EMP-005', mobile: '9876543224', outletId: 'o3', active: true },
+  { id: 'e6', email: 'emp6@groversweets.com', password: 'emp123', name: 'Anjali Mishra', role: 'employee', employeeId: 'GS-EMP-006', mobile: '9876543225', outletId: 'o3', active: true },
+  { id: 'e7', email: 'emp7@groversweets.com', password: 'emp123', name: 'Karan Malhotra', role: 'employee', employeeId: 'GS-EMP-007', mobile: '9876543226', outletId: 'o4', active: false },
+  { id: 'e8', email: 'emp8@groversweets.com', password: 'emp123', name: 'Pooja Saxena', role: 'employee', employeeId: 'GS-EMP-008', mobile: '9876543227', outletId: 'o5', active: true },
 ];
 
 export const leaveBalances: Record<string, LeaveBalance> = {

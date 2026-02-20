@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 
 export const AdminDashboard: React.FC = () => {
   const { user } = useAuth();
-  const { leaves, employees, outlets, signupRequests } = useApp();
+  const { leaves, employees, outlets, signupRequests, updateEmployee, addToast } = useApp();
 
   const pendingLeaves = leaves.filter(l => l.status === 'pending');
   const approvedLeaves = leaves.filter(l => l.status === 'approved');
@@ -39,6 +39,12 @@ export const AdminDashboard: React.FC = () => {
     total: leaves.filter(l => l.outletId === outlet.id).length,
     pending: leaves.filter(l => l.outletId === outlet.id && l.status === 'pending').length,
   }));
+
+  const handleToggleActive = (id: string, current?: boolean) => {
+    const newStatus = !current;
+    updateEmployee(id, { active: newStatus });
+    addToast(`Employee ${newStatus ? 'activated' : 'deactivated'}`, newStatus ? 'success' : 'info');
+  };
 
   // Admin-only: Allocate leave balances
   const [selectedUser, setSelectedUser] = React.useState('');
@@ -306,6 +312,35 @@ export const AdminDashboard: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Employees (Active / Inactive) */}
+      <Card>
+        <div className="px-6 py-4 border-b border-gold/10 flex items-center justify-between bg-gradient-to-r from-cream to-cream-light">
+          <h2 className="text-lg font-semibold text-maroon font-serif">Employees (Active / Inactive)</h2>
+          <Link to="/employees" className="text-sm text-gold hover:text-gold-dark font-medium">Manage →</Link>
+        </div>
+        <CardContent className="p-0">
+          <div className="divide-y divide-gray-100">
+            {employees.map(emp => {
+              const isActive = emp.active ?? true;
+              return (
+                <div key={emp.id} className="p-4 flex items-center justify-between hover:bg-cream/50">
+                  <div>
+                    <p className="font-medium text-gray-800">{emp.name} <span className="text-xs text-gray-500">{`(${emp.employeeId})`}</span></p>
+                    <p className="text-xs text-gray-500">{emp.mobile}</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className={`px-2 py-1 rounded text-xs ${isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}`}>{isActive ? 'Active' : 'Inactive'}</span>
+                    <button onClick={() => handleToggleActive(emp.id, emp.active)} className={`px-3 py-1 rounded text-sm ${isActive ? 'bg-red-500 text-white' : 'bg-green-600 text-white'}`}>
+                      {isActive ? 'Deactivate' : 'Activate'}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </CardContent>
       </Card>
